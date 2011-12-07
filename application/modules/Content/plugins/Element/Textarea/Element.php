@@ -55,7 +55,7 @@ class Content_Plugin_Element_Textarea_Element extends Content_Model_Plugin_Eleme
                 
         $path = $form->createElement('text','value');
         $path->setLabel('Starting Value: ');
-        $path->setRequired('true');
+        //$path->setRequired('true');
         $path->addFilter('StripTags');//@todo filter chars
         $form->addElement($path);
         

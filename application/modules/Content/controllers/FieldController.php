@@ -137,7 +137,6 @@ class Content_FieldController extends Zend_Controller_Action {
         }
 
         if (!$form->isValid($_POST)) {
-            // Failed validation; redisplay form
             $this->view->form = $form;
             return;
         }

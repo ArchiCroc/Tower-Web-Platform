@@ -56,7 +56,6 @@ class Content_Model_CategorySet_Service {
      */
     public function getObjects(){
         $categorySets = $this->getMapper()->fetchObjects();
-
        // if (empty($categorySets)) {
        //     throw new NotFoundException('Category Sets Not Found', 404);
        // }

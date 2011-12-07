@@ -2,6 +2,7 @@
 /library/Zend
 /library/ZendX
 /application/cache
+/application/config
 /docs
 /html/build
 /html/example/
