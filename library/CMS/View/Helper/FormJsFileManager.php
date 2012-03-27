@@ -36,9 +36,9 @@ class CMS_View_Helper_FormJsFileManager extends CMS_View_Helper_FormJsElement {
             throw new Exception('invalid value');
         }
         
-        if(empty($params['folder'])){
-            $params['folder'] = '';
-        }
+//        if(empty($params['folder'])){
+//            $params['folder'] = '';
+//        }
 
         //add class;
         $class = 'cms-element-filemanager';
@@ -57,12 +57,15 @@ class CMS_View_Helper_FormJsFileManager extends CMS_View_Helper_FormJsElement {
     }
 
     protected function _attachScripts() {
-        $this->view->headScript()->appendFile('/js/mylibs/jquery.filemanager.js');
+        $this->view->headLink()->appendStylesheet('/css/jquery.filemanager.css');
+        
+        $this->view->headLink()->appendStylesheet('/css/jquery.fileupload-ui.css');
+        $this->view->headScript()->appendFile('/js/libs/jquery.iframe-transport.js');
         $this->view->headScript()->appendFile('/js/libs/jquery.fileupload.js');
         $this->view->headScript()->appendFile('/js/libs/jquery.fileupload-ui.js');
         $this->view->headScript()->appendFile('/js/mylibs/jquery.fileupload.js');
-        $this->view->headScript()->appendFile('/js/libs/jquery.iframe-transport.js');
-        $this->view->headLink()->appendStylesheet('/css/jquery.fileupload-ui.css');
+        $this->view->headScript()->appendFile('/js/mylibs/jquery.filemanager.js');
+        
     }
 
     protected function _list($values, $attribs, $params) {

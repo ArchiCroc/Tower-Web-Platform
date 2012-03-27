@@ -242,9 +242,10 @@ if (typeof Object.create === 'undefined') {
                     var self = this;
                     this.editor.filemanager({
                         maxItems: 20, 
-                        folder: this.element.data('folder'), 
-                        rest: this.element.data('rest'), 
-                        hash: this.element.data('hash'),
+                        //folder: this.element.data('folder'), 
+                        id: this.element.data('id'),
+                        url: this.element.data('url'), 
+                       // hash: this.element.data('hash'),
                         
                     
                        selected: function(event,data){
@@ -509,7 +510,7 @@ if (typeof Object.create === 'undefined') {
            var self = this;
            
            
-           data = $.extend({}, {rest: editor.rest, folder:editor.folder, hash:editor.hash }, data);
+           data = $.extend({}, {url: editor.url, id:editor.id}, data);
            console.log(data, editor);
             var b =  $('<div data-block="'+name+'"/>');
             
@@ -680,8 +681,10 @@ if (typeof Object.create === 'undefined') {
         
         
         updateTextarea: function(){
-          //  console.log(['collpase',this.htmlView]);
-           // if(this.htmlView !== false){return;}
+            //console.log(['collpase',this.htmlView]);
+            if(this.htmlView == true){
+                return;
+            }
                 var temp = this.editor.clone().detach();
                // temp.find('.block').each(function(index, element){ console.log('found block');$(element).wysiwygblock({collapse:true});});
                 temp.find('.block').wysiwygblock({collapse:true});

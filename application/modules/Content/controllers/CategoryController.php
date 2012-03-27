@@ -31,7 +31,7 @@ class Content_CategoryController extends Zend_Controller_Action
     
     public function init()
     {
-        $this->view->controllerTitle = 'Category'; //for generic templates
+        $this->view->heading = 'Category'; //for generic templates
         $this->view->id = $this->_id = $this->_getParam('id');
     }
     
@@ -67,7 +67,7 @@ class Content_CategoryController extends Zend_Controller_Action
             'params' => array('id' => $object->id)
         ));
 
-        $this->view->heading = $object->title.' Category Set';
+        $this->view->heading = $object->title.' Category';
         
        //return $section;
     }
@@ -175,7 +175,7 @@ class Content_CategoryController extends Zend_Controller_Action
 
         $set = $object->set;
         
-        if(!empty($_POST['delete'])){
+        if(!empty($_POST['confirm'])){
             
             $title = $object->title;
             $service->delete($object);

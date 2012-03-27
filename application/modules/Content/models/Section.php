@@ -94,11 +94,20 @@ class Content_Model_Section implements Content_Model_Section_Interface {
             throw new Exception('Id Not Loaded yet');
         }
         
-        if(is_null($this->_fields)){
+        if($this->_fields === null){
             $service = new Content_Model_Field_Service();
             $this->_fields = $service->getMetadataBySection($this->id);
         }
         return $this->_fields;
+    }
+    
+    public function getField($name){
+        $fields = $this->getFields();
+        if(!empty($fields[$name])){
+            return $fields[$name];
+        }
+        
+        return null;
     }
     
 

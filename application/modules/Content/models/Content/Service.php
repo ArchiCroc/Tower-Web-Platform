@@ -113,8 +113,8 @@ class Content_Model_Content_Service {
      * @param int $section Section Id
      * @return Content_Model_Content[]
      */
-    public function getObjectsBySection($section) {
-        $objects = $this->getMapper()->fetchObjectsBySection($section);
+    public function getObjectsBySection($section, $select = array()) {
+        $objects = $this->getMapper()->fetchObjectsBySection($section, $select);
 
 //        if (empty($contents)) {
 //            throw new Exception('Apikey not found', 404);
@@ -126,7 +126,7 @@ class Content_Model_Content_Service {
      * @param int $category Section Id
      * @return Content_Model_Content[]
      */
-    public function getObjectsBySectionCategory($section, $mixed) {
+    public function getObjectsBySectionCategory($section, $mixed, $select = array()) {
         
         if(!is_numeric($section) && is_string($section)){
             $sService = new Content_Model_Section_Service();
@@ -149,7 +149,7 @@ class Content_Model_Content_Service {
             throw new InvalidArgumentException('Invalid Category: '.$mixed);
         }
         
-        $objects = $this->getMapper()->fetchObjectsBySectionCategory($s, $category);
+        $objects = $this->getMapper()->fetchObjectsBySectionCategory($s, $category, $select);
 
 //        if (empty($contents)) {
 //            throw new Exception('Apikey not found', 404);
@@ -200,6 +200,9 @@ class Content_Model_Content_Service {
         }
 
         $result = $this->getMapper()->save($object);
+        
+        //save addtional data as required by elements
+        //@todo create custom function that only pulls the elements that are saveable/deleteable
 
         $fields = $object->getSection()->getFields();
         foreach ($fields as $key => $value) {
@@ -230,6 +233,7 @@ class Content_Model_Content_Service {
 
         $result = $this->getMapper()->save($object);
 
+        //save addtional data as required by elements
         $fields = $object->getSection()->getFields();
         foreach ($fields as $key => $value) {
             // die('called'.$key);
@@ -239,6 +243,8 @@ class Content_Model_Content_Service {
                 $o->save($result);
             }
         }
+        
+       // die('Check Now');
 
         return $result;
     }

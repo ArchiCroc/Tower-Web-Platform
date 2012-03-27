@@ -6,7 +6,7 @@ class Content_IndexController extends Zend_Controller_Action
     {       
         //get section
         $section = $this->_getParam('section');
-        if(is_null($section)){
+        if($section === null){
             throw new InvalidArgumentException('Missing Section in Route');
         }
              
@@ -39,11 +39,9 @@ class Content_IndexController extends Zend_Controller_Action
             $config = Zend_Registry::get('config');
             
              if ($user->id == $config->site->user->guest) { //if guest
-               return $this->_redirect($this->view->url(array(),'login'));// 
-               
+                return $this->_redirect($this->view->url(array(),'login'));// 
             } else {                
                 return $this->_forward('noauth', 'error', 'core');
-
             }
         }
          

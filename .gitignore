@@ -1,13 +1,6 @@
-/nbproject/private/
+
+/docs
+/library/NetBeansCommandsProvider.php
 /library/Zend
 /library/ZendX
-/application/cache
-/application/config
-/docs
-/html/build
-/html/example/
-/html/img/social/
-/html/mcd_uploader/
-/uploads/
-/html/example
-/application/configs
+/library/make link.txt.bat

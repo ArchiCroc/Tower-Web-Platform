@@ -44,8 +44,9 @@ class CMS_Acl_Resource_Object implements Zend_Acl_Resource_Interface, CMS_Acl_Pa
      */
     public function __construct($controller, $object)
     {
+         
         $this->_parent = new CMS_Acl_Resource_Controller($controller);
-        $this->_resourceId = $this->_parent->getResourceId().'o'.strtolower((string) $object);
+        $this->_resourceId =  $this->_parent->getResourceId().'o'.strtolower((string) $object);
     }
 
     /**
